@@ -57,40 +57,50 @@ function computerMove() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  console.log(playerSelection = playerMove());
-  console.log(computerSelection = computerMove());
+  playerSelection = playerMove();
+  computerSelection = computerMove();
+  let roundResult;
 
   if (playerSelection === "rock"){
-    if (computerSelection === "rock")
-      {
-        console.log("You both picked rock. This round is a tie.");
-      } else if (computerSelection === "scissors"){
-          console.log("You picked rock and they picked scissors. You win this round.");
-        } else {
-            console.log("You picked rock and they picked paper. You lose this round.");
-          }
-  } else if (playerSelection === "paper"){
-      if (computerSelection === "paper")
-        {
-          console.log("You both picked paper. This round is a tie.");
-        } else if (computerSelection === "rock"){
-            console.log("You picked paper and they picked rock. You win this round.");
-          } else {
-              console.log("You picked paper and they picked scissors. You lose this round.");
-            }
+    if (computerSelection === "rock"){
+      console.log("You both picked rock. This round is a tie.");
+      roundResult = "tie";
+    } else if (computerSelection === "scissors"){
+      console.log("You picked rock and they picked scissors. You win this round.");
+      roundResult = "win";
     } else {
-        if (computerSelection === "scissors")
-        {
-          console.log("You both picked scissors. This round is a tie.");
-        } else if (computerSelection === "paper"){
-            console.log("You picked scissors and they picked paper. You win this round.");
-          } else {
-              console.log("You picked scissors and they picked rock. You lose this round.");
-            }
-      }
+      console.log("You picked rock and they picked paper. You lose this round.");
+      roundResult = "loss";
+    }
+  } else if (playerSelection === "paper"){
+    if (computerSelection === "paper"){
+      console.log("You both picked paper. This round is a tie.");
+      roundResult = "tie";
+    } else if (computerSelection === "rock"){
+      console.log("You picked paper and they picked rock. You win this round.");
+      roundResult = "win";
+    } else {
+      console.log("You picked paper and they picked scissors. You lose this round.");
+      roundResult = "loss";
+    }
+  } else {
+    if (computerSelection === "scissors"){
+      console.log("You both picked scissors. This round is a tie.");
+      roundResult = "tie";
+    } else if (computerSelection === "paper"){
+      console.log("You picked scissors and they picked paper. You win this round.");
+      roundResult = "win";
+    } else {
+      console.log("You picked scissors and they picked rock. You lose this round.");
+      roundResult = "loss";
+    }
+  }
+  
+  console.log(roundResult);
+  return roundResult;
 }
 
-function game() {
+function game(lastRoundResult) {
 
 }
 
