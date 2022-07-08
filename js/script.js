@@ -29,14 +29,26 @@ game():
     }
 
 -----ALGORITHM-----
+ XXX  Run computerPlay() function to determine random computer selection
+
 Collect player input to determine player selection, using prompt()
-Run computerPlayer() function to determine random computer selection
+
 Enter these two selections as parameters in playRound() function.
   playRound() RETURNS winner of round and also returns a string indicating the winner of the round in the console.
 playRound is called by game(), which runs 5 games, keeping score and reporting a winner or loser at the end (using console.log())
     playRound returns the winner/loser score so it can be used in game()
-
------PSEUDOCODE-----
-
-
 */
+
+function computerPlay() {
+  const choices = ["Rock", "Paper", "Scissors"];
+  const random = Math.floor(Math.random() * choices.length);
+  return choices[random];
+}
+
+
+
+
+
+
+computerPlay();
+console.log(computerPlay());
