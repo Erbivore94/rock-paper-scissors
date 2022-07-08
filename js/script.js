@@ -39,16 +39,32 @@ playRound is called by game(), which runs 5 games, keeping score and reporting a
     playRound returns the winner/loser score so it can be used in game()
 */
 
-function computerPlay() {
-  const choices = ["Rock", "Paper", "Scissors"];
-  const random = Math.floor(Math.random() * choices.length);
+function playerMove () {
+  let playerInput = prompt("Make your move!");
+  playerInput = playerInput.toLowerCase();
+
+  if (!(playerInput === "rock" || playerInput === "paper" || playerInput === "scissors")){
+    playerMove();
+  } else {
+    console.log(`Player Move: ${playerInput}`);
+    return playerInput;
+  }
+}
+
+function computerMove() {
+  const choices = ["rock", "paper", "scissors"];
+  let random = Math.floor(Math.random() * choices.length);
+  console.log(`Computer Move: ${choices[random]}`);
   return choices[random];
 }
 
+function playRound() {
 
+}
 
+function game() {
 
+}
 
-
-computerPlay();
-console.log(computerPlay());
+playerMove();
+computerMove();
