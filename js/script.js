@@ -46,7 +46,6 @@ function playerMove () {
   if (!(playerInput === "rock" || playerInput === "paper" || playerInput === "scissors")){
     playerMove();
   } else {
-    console.log(`Player Move: ${playerInput}`);
     return playerInput;
   }
 }
@@ -54,17 +53,45 @@ function playerMove () {
 function computerMove() {
   const choices = ["rock", "paper", "scissors"];
   let random = Math.floor(Math.random() * choices.length);
-  console.log(`Computer Move: ${choices[random]}`);
   return choices[random];
 }
 
-function playRound() {
+function playRound(playerSelection, computerSelection) {
+  console.log(playerSelection = playerMove());
+  console.log(computerSelection = computerMove());
 
+  if (playerSelection === "rock"){
+    if (computerSelection === "rock")
+      {
+        console.log("You both picked rock. This round is a tie.");
+      } else if (computerSelection === "scissors"){
+          console.log("You picked rock and they picked scissors. You win this round.");
+        } else {
+            console.log("You picked rock and they picked paper. You lose this round.");
+          }
+  } else if (playerSelection === "paper"){
+      if (computerSelection === "paper")
+        {
+          console.log("You both picked paper. This round is a tie.");
+        } else if (computerSelection === "rock"){
+            console.log("You picked paper and they picked rock. You win this round.");
+          } else {
+              console.log("You picked paper and they picked scissors. You lose this round.");
+            }
+    } else {
+        if (computerSelection === "scissors")
+        {
+          console.log("You both picked scissors. This round is a tie.");
+        } else if (computerSelection === "paper"){
+            console.log("You picked scissors and they picked paper. You win this round.");
+          } else {
+              console.log("You picked scissors and they picked rock. You lose this round.");
+            }
+      }
 }
 
 function game() {
 
 }
 
-playerMove();
-computerMove();
+playRound();
