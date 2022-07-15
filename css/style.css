@@ -37,6 +37,20 @@ body {
   background-color: #3882F6;
 }
 
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+  font-weight: bold;
+}
+
+#rock:active,
+#paper:active,
+#scissors:active {
+  font-weight: bold;
+  background-color: hsl(217, 80%, 40%);
+}
+
+
 .scoreboard {
   display: flex;
   flex-direction: row;
