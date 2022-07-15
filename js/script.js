@@ -1,15 +1,12 @@
-game();
+// game();
 
-function playerMove () {
-  let playerInput = prompt("Make your move!");
-  playerInput = playerInput.toLowerCase();
+const buttons = document.querySelectorAll(".button");
 
-  if (!(playerInput === "rock" || playerInput === "paper" || playerInput === "scissors")){
-    playerMove();
-  } else {
-    return playerInput;
-  }
-}
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log(button.id)
+  });
+});
 
 function computerMove() {
   const choices = ["rock", "paper", "scissors"];
@@ -60,12 +57,14 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
+/*
 function game(lastRoundResult) {
+
   let winCounter = 0;
   let lossCounter = 0;
   let tieCounter = 0;
 
-  // for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     lastRoundResult = playRound();
     if (lastRoundResult === "win"){
       winCounter++;
@@ -75,14 +74,8 @@ function game(lastRoundResult) {
       tieCounter++;
     }
     console.log(`Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
+  }
 
-    // REMOVE THE LINE BELOW AFTER BRANCH MERGE //
-    playRound();
-    ///////////////////////////////////
-
-  // }
-
-/*
   if (winCounter === lossCounter){
     console.log(`FINISH! It's a tie game. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   } else if (winCounter > lossCounter){
@@ -90,6 +83,5 @@ function game(lastRoundResult) {
   } else {
     console.log(`FINISH! Too bad, you lost to the computer. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   }
-*/
-
 }
+*/
