@@ -65,7 +65,7 @@ function game(lastRoundResult) {
   let lossCounter = 0;
   let tieCounter = 0;
 
-  for (let i = 0; i < 5; i++) {
+  // for (let i = 0; i < 5; i++) {
     lastRoundResult = playRound();
     if (lastRoundResult === "win"){
       winCounter++;
@@ -75,8 +75,14 @@ function game(lastRoundResult) {
       tieCounter++;
     }
     console.log(`Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
-  }
 
+    // REMOVE THE LINE BELOW AFTER BRANCH MERGE //
+    playRound();
+    ///////////////////////////////////
+
+  // }
+
+/*
   if (winCounter === lossCounter){
     console.log(`FINISH! It's a tie game. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   } else if (winCounter > lossCounter){
@@ -84,4 +90,6 @@ function game(lastRoundResult) {
   } else {
     console.log(`FINISH! Too bad, you lost to the computer. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   }
+*/
+
 }
