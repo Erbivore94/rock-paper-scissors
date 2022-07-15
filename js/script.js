@@ -1,5 +1,4 @@
 // game();
-
 const buttons = document.querySelectorAll(".button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -16,38 +15,49 @@ function computerMove() {
 function playRound(playerSelection, computerSelection) {
   computerSelection = computerMove();
   let roundResult;
+  const message1 = document.querySelector("#message1");
+  const message2 = document.querySelector("#message2");
 
   if (playerSelection === "rock"){
     if (computerSelection === "rock"){
-      console.log("You both picked rock. This round is a tie.");
+      message1.textContent = "You both picked rock."; 
+      message2.textContent = "This round is a tie.";
       roundResult = "tie";
     } else if (computerSelection === "scissors"){
-      console.log("You picked rock and they picked scissors. You win this round.");
+      message1.textContent = "You picked rock and the computer picked scissors."
+      message2.textContent = "You win this round.";
       roundResult = "win";
     } else {
-      console.log("You picked rock and they picked paper. You lose this round.");
+      message1.textContent = "You picked rock and the computer picked paper.";
+      message2.textContent = "You lose this round.";
       roundResult = "loss";
     }
   } else if (playerSelection === "paper"){
     if (computerSelection === "paper"){
-      console.log("You both picked paper. This round is a tie.");
+      message1.textContent = "You both picked paper.";
+      message2.textContent = "This round is a tie.";
       roundResult = "tie";
     } else if (computerSelection === "rock"){
-      console.log("You picked paper and they picked rock. You win this round.");
+      message1.textContent = "You picked paper and the computer picked rock.";
+      message2.textContent = "You win this round.";
       roundResult = "win";
     } else {
-      console.log("You picked paper and they picked scissors. You lose this round.");
+      message1.textContent = "You picked paper and the computer picked scissors.";
+      message2.textContent = "You lose this round.";
       roundResult = "loss";
     }
   } else {
     if (computerSelection === "scissors"){
-      console.log("You both picked scissors. This round is a tie.");
+      message1.textContent = "You both picked scissors.";
+      message2.textContent = "This round is a tie.";
       roundResult = "tie";
     } else if (computerSelection === "paper"){
-      console.log("You picked scissors and they picked paper. You win this round.");
+      message1.textContent = "You picked scissors and the computer picked paper.";
+      message2.textContent = "You win this round.";
       roundResult = "win";
     } else {
-      console.log("You picked scissors and they picked rock. You lose this round.");
+      message1.textContent = "You picked scissors and the computer picked rock.";
+      message2.textContent = "You lose this round.";
       roundResult = "loss";
     }
   }
