@@ -20,15 +20,13 @@ body {
   font-size: 24px;
 }
 
-.button-container {
+#button-container {
   display: flex;
   margin: 16px 0px;
   gap: 32px;
 }
 
-#rock,
-#paper,
-#scissors {
+.button {
   border: 0px;
   height: 32px;
   width: 128px;
@@ -37,15 +35,11 @@ body {
   background-color: #3882F6;
 }
 
-#rock:hover,
-#paper:hover,
-#scissors:hover {
+.button:hover {
   font-weight: bold;
 }
 
-#rock:active,
-#paper:active,
-#scissors:active {
+.button:active {
   font-weight: bold;
   background-color: hsl(217, 80%, 40%);
 }
