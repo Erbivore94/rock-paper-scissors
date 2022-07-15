@@ -1,10 +1,9 @@
 // game();
 
 const buttons = document.querySelectorAll(".button");
-
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(button.id)
+    playRound(button.id)
   });
 });
 
@@ -15,7 +14,6 @@ function computerMove() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerMove();
   computerSelection = computerMove();
   let roundResult;
 
