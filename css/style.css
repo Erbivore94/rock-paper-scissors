@@ -4,8 +4,8 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
-  color: #F9FAF8;
-  background-color: #1f2937;
+  color: hsl(100, 0%, 95%);
+  background-color: hsl(0, 0%, 25%);
 
   display: flex;
   flex-direction: column;
@@ -33,8 +33,8 @@ body {
   height: 32px;
   width: 128px;
   font-size: 18px;
-  color: #F9FAF8;
-  background-color: #3882F6;
+  color: hsl(100, 0%, 95%);
+  background-color: hsl(0, 75%, 50%);
 }
 
 .button:hover {
@@ -43,7 +43,7 @@ body {
 
 .button:active {
   font-weight: bold;
-  background-color: hsl(217, 80%, 40%);
+  background-color: hsl(0, 75%, 40%);
 }
 
 
