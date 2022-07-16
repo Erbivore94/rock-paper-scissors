@@ -1,10 +1,29 @@
-// game();
-const buttons = document.querySelectorAll(".button");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    playRound(button.id)
+let roundCounter = 0;
+let winCounter = 0;
+let lossCounter = 0;
+let tieCounter = 0;
+
+const round = document.querySelector("#round");
+const wins = document.querySelector("#wins");
+const losses = document.querySelector("#losses");
+const ties = document.querySelector("#ties");
+
+game();
+
+function game() {
+  const buttons = document.querySelectorAll(".button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      lastRoundResult = playRound(button.id)
+      displayRoundResult(lastRoundResult);
+    });
   });
-});
+
+  if (roundCounter >= 5) {
+    endGame();
+    console.log("Running end");
+  }
+}
 
 function computerMove() {
   const choices = ["rock", "paper", "scissors"];
@@ -61,29 +80,25 @@ function playRound(playerSelection, computerSelection) {
       roundResult = "loss";
     }
   }
-  
   return roundResult;
 }
 
-/*
-function game(lastRoundResult) {
-
-  let winCounter = 0;
-  let lossCounter = 0;
-  let tieCounter = 0;
-
-  for (let i = 0; i < 5; i++) {
-    lastRoundResult = playRound();
-    if (lastRoundResult === "win"){
-      winCounter++;
-    } else if (lastRoundResult === "loss"){
-      lossCounter++;
-    } else {
-      tieCounter++;
-    }
-    console.log(`Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
+function displayRoundResult (roundResult) {
+  if (roundResult === "win"){
+    winCounter++;
+  } else if (roundResult === "loss"){
+    lossCounter++;
+  } else {
+    tieCounter++;
   }
 
+  round.textContent = `Round: ${roundCounter}`;
+  wins.textContent = `Wins: ${winCounter}`;
+  losses.textContent = `Losses: ${lossCounter}`;
+  ties.textContent = `Ties: ${tieCounter}`;
+}
+
+function endGame() {
   if (winCounter === lossCounter){
     console.log(`FINISH! It's a tie game. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   } else if (winCounter > lossCounter){
@@ -92,4 +107,4 @@ function game(lastRoundResult) {
     console.log(`FINISH! Too bad, you lost to the computer. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   }
 }
-*/
+
