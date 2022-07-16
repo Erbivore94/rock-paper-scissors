@@ -2,9 +2,11 @@ const round = document.querySelector("#round");
 const wins = document.querySelector("#wins");
 const losses = document.querySelector("#losses");
 const ties = document.querySelector("#ties");
+const buttons = document.querySelectorAll(".button");
 const message1 = document.querySelector("#message1");
 const message2 = document.querySelector("#message2");
 
+playGame();
 resetGame();
 
 function resetGame() {
@@ -13,7 +15,6 @@ function resetGame() {
   lossCounter = 0;
   tieCounter = 0;
   displayScore();
-  playGame();
 }
 
 function displayScore() {
@@ -24,19 +25,12 @@ function displayScore() {
 }
 
 function playGame() {
-  const buttons = document.querySelectorAll(".button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       lastRoundResult = playRound(button.id)
       roundResult(lastRoundResult);
     });
   });
-}
-
-function computerMove() {
-  const choices = ["rock", "paper", "scissors"];
-  let random = Math.floor(Math.random() * choices.length);
-  return choices[random];
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -87,6 +81,12 @@ function playRound(playerSelection, computerSelection) {
     }
   }
   return roundResult;
+}
+
+function computerMove() {
+  const choices = ["rock", "paper", "scissors"];
+  let random = Math.floor(Math.random() * choices.length);
+  return choices[random];
 }
 
 function roundResult (roundResult) {
