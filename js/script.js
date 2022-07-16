@@ -1,36 +1,36 @@
-let roundCounter = 0;
-let winCounter = 0;
-let lossCounter = 0;
-let tieCounter = 0;
 const round = document.querySelector("#round");
 const wins = document.querySelector("#wins");
 const losses = document.querySelector("#losses");
 const ties = document.querySelector("#ties");
+const message1 = document.querySelector("#message1");
+const message2 = document.querySelector("#message2");
 
 resetGame();
 
 function resetGame() {
-  roundCounter = 0;
+  roundCounter = 1;
   winCounter = 0;
   lossCounter = 0;
   tieCounter = 0;
+  displayScore();
   playGame();
+}
+
+function displayScore() {
+  round.textContent = `Round: ${roundCounter}`;
+  wins.textContent = `Wins: ${winCounter}`;
+  losses.textContent = `Losses: ${lossCounter}`;
+  ties.textContent = `Ties: ${tieCounter}`;
 }
 
 function playGame() {
   const buttons = document.querySelectorAll(".button");
-
-  if (roundCounter < 5) {
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        lastRoundResult = playRound(button.id)
-        displayRoundResult(lastRoundResult);
-      });
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      lastRoundResult = playRound(button.id)
+      roundResult(lastRoundResult);
     });
-  } else {
-    endGame();
-    console.log("Running end");
-  }
+  });
 }
 
 function computerMove() {
@@ -42,8 +42,6 @@ function computerMove() {
 function playRound(playerSelection, computerSelection) {
   computerSelection = computerMove();
   let roundResult;
-  const message1 = document.querySelector("#message1");
-  const message2 = document.querySelector("#message2");
 
   if (playerSelection === "rock"){
     if (computerSelection === "rock"){
@@ -91,7 +89,7 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
-function displayRoundResult (roundResult) {
+function roundResult (roundResult) {
   if (roundResult === "win"){
     winCounter++;
   } else if (roundResult === "loss"){
@@ -101,19 +99,22 @@ function displayRoundResult (roundResult) {
   }
   roundCounter++;
 
-  round.textContent = `Round: ${roundCounter}`;
-  wins.textContent = `Wins: ${winCounter}`;
-  losses.textContent = `Losses: ${lossCounter}`;
-  ties.textContent = `Ties: ${tieCounter}`;
+  if (roundCounter >=6) {
+    endGame();
+  }
+  displayScore();
 }
 
 function endGame() {
   if (winCounter === lossCounter){
-    console.log(`FINISH! It's a tie game. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
+    message1.textContent = `FINISH!`;
+    message2.textContent = `It's a tie game.`;
   } else if (winCounter > lossCounter){
-    console.log(`FINISH! Congratulations, you beat the computer! The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
+    message1.textContent = `FINISH!`; 
+    message2.textContent = `Congratulations, you beat the computer!`;
   } else {
-    console.log(`FINISH! Too bad, you lost to the computer. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
+    message1.textContent = `FINISH!`
+    message2.textContent = `Too bad, you lost to the computer.`
   }
   resetGame();
 }
