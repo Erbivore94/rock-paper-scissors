@@ -2,24 +2,32 @@ let roundCounter = 0;
 let winCounter = 0;
 let lossCounter = 0;
 let tieCounter = 0;
-
 const round = document.querySelector("#round");
 const wins = document.querySelector("#wins");
 const losses = document.querySelector("#losses");
 const ties = document.querySelector("#ties");
 
-game();
+resetGame();
 
-function game() {
+function resetGame() {
+  roundCounter = 0;
+  winCounter = 0;
+  lossCounter = 0;
+  tieCounter = 0;
+  playGame();
+}
+
+function playGame() {
   const buttons = document.querySelectorAll(".button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      lastRoundResult = playRound(button.id)
-      displayRoundResult(lastRoundResult);
-    });
-  });
 
-  if (roundCounter >= 5) {
+  if (roundCounter < 5) {
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        lastRoundResult = playRound(button.id)
+        displayRoundResult(lastRoundResult);
+      });
+    });
+  } else {
     endGame();
     console.log("Running end");
   }
@@ -91,6 +99,7 @@ function displayRoundResult (roundResult) {
   } else {
     tieCounter++;
   }
+  roundCounter++;
 
   round.textContent = `Round: ${roundCounter}`;
   wins.textContent = `Wins: ${winCounter}`;
@@ -106,5 +115,6 @@ function endGame() {
   } else {
     console.log(`FINISH! Too bad, you lost to the computer. The score was: Wins: ${winCounter}. Losses: ${lossCounter}. Ties: ${tieCounter}.`);
   }
+  resetGame();
 }
 
